@@ -19,7 +19,9 @@ int main()
 
 	vector<string> lines; 
 
-	string line;
+	string line; 
+	
+	// EOF(End of File)
 	while (getline(inputFile, line)) // 엔터를 기준으로 읽어 lines 벡터에 저장
 	{ 
 		lines.push_back(line);
@@ -38,7 +40,7 @@ int main()
 	cout << "\n거꾸로 읽기 성공" << endl;
 
 	inputFile.close();
-	outputFile.close();
+	outputFile.close(); // 쓰기 파일은 안 닫으면 저장이 안됨
 
 	return 0;
 
