@@ -1,8 +1,8 @@
-// ½Ç½À 2. È¸¿ø ¸íºÎ¸¦ ÀÀ¿ëÇÑ ·Î±×ÀÎ ±â´É
-//1. »ç¿ëÀÚ¿¡°Ô "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä." ¶ó´Â ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÑ µÚ ÀÌ¸§ ÀÔ·Â ¹Þ±â
-//2. »ç¿ëÀÚ¿¡°Ô "ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä." ¶ó´Â ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÑ µÚ ºñ¹Ð¹øÈ£ ÀÔ·Â ¹Þ±â
-//3. member.txt¿¡¼­ ÇÑÁÙ¾¿ "ÀÌ¸§"°ú "ºñ¹ø"À» °Ë»çÇÏ¿© ·Î±×ÀÎ ¼º°ø½Ã "·Î±×ÀÎ ¼º°ø" ½ÇÆÐ ½Ã "·Î±×ÀÎ ½ÇÆÐ" Ãâ·Â
-//4. ¿©±â¼­ member.txt´Â ¾Õ ½Ç½À¿¡¼­ ¸¸µç È¸¿ø ¸íºÎ
+// ì‹¤ìŠµ 2. íšŒì› ëª…ë¶€ë¥¼ ì‘ìš©í•œ ë¡œê·¸ì¸ ê¸°ëŠ¥
+//1. ì‚¬ìš©ìžì—ê²Œ "ì´ë¦„ì„ ìž…ë ¥í•˜ì„¸ìš”." ë¼ëŠ” ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•œ ë’¤ ì´ë¦„ ìž…ë ¥ ë°›ê¸°
+//2. ì‚¬ìš©ìžì—ê²Œ "ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”." ë¼ëŠ” ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•œ ë’¤ ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ ë°›ê¸°
+//3. member.txtì—ì„œ í•œì¤„ì”© "ì´ë¦„"ê³¼ "ë¹„ë²ˆ"ì„ ê²€ì‚¬í•˜ì—¬ ë¡œê·¸ì¸ ì„±ê³µì‹œ "ë¡œê·¸ì¸ ì„±ê³µ" ì‹¤íŒ¨ ì‹œ "ë¡œê·¸ì¸ ì‹¤íŒ¨" ì¶œë ¥
+//4. ì—¬ê¸°ì„œ member.txtëŠ” ì•ž ì‹¤ìŠµì—ì„œ ë§Œë“  íšŒì› ëª…ë¶€
 
 #include <iostream>
 #include <fstream>
@@ -13,28 +13,28 @@ using namespace std;
 
 void login(const string& username, const string& password) 
 {
-    ifstream file("member.txt");  // member.txt ÆÄÀÏ¿¡¼­ È¸¿ø ¸íºÎ ÀÐ±â
+    ifstream file("member.txt");  // member.txt íŒŒì¼ì—ì„œ íšŒì› ëª…ë¶€ ì½ê¸°
 
 
     if (file.fail())
     {
-        cout << "ÆÄÀÏÀ» ¿­ ¼ö ¾ø½À´Ï´Ù." << endl;
+        cout << "íŒŒì¼ì„ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
         return;
     }
 
     string line;
     bool logInOK = false;
 
-    while (getline(file, line))  // ÆÄÀÏ¿¡¼­ ÇÑ ÁÙ¾¿ ÀÐ¾î¿Í¼­ ÀÌ¸§°ú ºñ¹Ð¹øÈ£ ºñ±³
+    while (getline(file, line))  // íŒŒì¼ì—ì„œ í•œ ì¤„ì”© ì½ì–´ì™€ì„œ ì´ë¦„ê³¼ ë¹„ë°€ë²ˆí˜¸ ë¹„êµ
     {
         stringstream ss(line);
         string name, pw;
 
-        if (ss >> name >> pw) // °ø¹éÀ¸·Î ÀÌ¸§°ú ºñ¹Ð¹øÈ£ ÆÄ½Ì
+        if (ss >> name >> pw) // ê³µë°±ìœ¼ë¡œ ì´ë¦„ê³¼ ë¹„ë°€ë²ˆí˜¸ ë¶„ë¦¬
         {
             if (name == username && pw == password) 
             {
-                cout << "·Î±×ÀÎ ¼º°ø!" << endl;
+                cout << "ë¡œê·¸ì¸ ì„±ê³µ!" << endl;
                 logInOK = true;
                 break;
             }
@@ -43,7 +43,7 @@ void login(const string& username, const string& password)
 
     if (!logInOK)
     {
-        cout << "·Î±×ÀÎ ½ÇÆÐ!" << endl;
+        cout << "ë¡œê·¸ì¸ ì‹¤íŒ¨!" << endl;
     }
 
     file.close();
@@ -53,15 +53,15 @@ int main()
 {
     string username, password;
 
-    // »ç¿ëÀÚ·ÎºÎÅÍ ÀÌ¸§ ÀÔ·Â ¹Þ±â
-    cout << "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ";
+    // ì‚¬ìš©ìžë¡œë¶€í„° ì´ë¦„ ìž…ë ¥ ë°›ê¸°
+    cout << "ì´ë¦„ì„ ìž…ë ¥í•˜ì„¸ìš”: ";
     getline(cin, username);
 
-    // »ç¿ëÀÚ·ÎºÎÅÍ ºñ¹Ð¹øÈ£ ÀÔ·Â ¹Þ±â
-    cout << "ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ";
+    // ì‚¬ìš©ìžë¡œë¶€í„° ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ ë°›ê¸°
+    cout << "ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”: ";
     getline(cin, password);
 
-    // ·Î±×ÀÎ ½Ãµµ
+    // ë¡œê·¸ì¸ ì‹œë„
     login(username, password);
 
     return 0;
